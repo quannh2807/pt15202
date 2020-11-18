@@ -9,6 +9,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
+    "sweetalert": "^2.1.2",
     "tailwindcss": "^1.9.6",
     "web-vitals": "^0.2.4"
   },
@@ -16,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-json-server": "json-server --watch db.json --port 3004",
+    "build:tailwind": "tailwindcss build src/tailwind.css -o src/styles/tailwind.output.css"
   },
   "eslintConfig": {
     "extends": [
