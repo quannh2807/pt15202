@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./styles/tailwind.output.css";
 import "./assets/css/main.css";
@@ -73,23 +74,43 @@ const App = () => {
   };
 
   return (
-    <div>
-      {/* Header */}
-      <Header />
-      {/* Menu */}
-      <Menu />
-      {/* Banner */}
-      <Banner />
-      {/* One */}
-      <One />
-      {/* Two */}
-      <Two addPost={onHandleAddPost} />
-      {/* Post */}
-      <Posts data={listPost} removePost={onHandleRemovePost} />
-      {/* Footer */}
-      <Footer />
-    </div>
+    <Router>
+      <div>
+        {/* Header */}
+        <Header />
+        {/* Menu */}
+        <Menu />
+        {/* Banner */}
+        <Banner />
+        {/* One */}
+
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/posts">
+            <Posts data={listPost} removePost={onHandleRemovePost} />
+          </Route>
+          <Route exact path="/create-post">
+            <Two addPost={onHandleAddPost} />
+          </Route>
+        </Switch>
+
+        {/* Two */}
+
+        {/* Post */}
+
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
 export default App;
+
+const Home = () => (
+  <>
+    <One />
+  </>
+);
