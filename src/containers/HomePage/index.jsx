@@ -1,6 +1,6 @@
 import React from "react";
-import Banner from "../Banner";
-import One from "../One";
+import Banner from "../../components/Banner";
+import One from "../../components/One";
 
 const HomePage = () => {
   return (

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -12,9 +13,9 @@ const Banner = () => {
         </p>
         <ul className="actions">
           <li>
-            <a href="#one" className="button scrolly">
+            <Link to="/news" className="button scrolly">
               Get Started
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
