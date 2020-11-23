@@ -3,51 +3,68 @@ import React from "react";
 const Contact = () => {
     return (
         <div className="container mx-auto my-10">
-            <h2 className="text-center">Contact to us</h2>
+            <h2 className="text-center text-secondary font-bold text-3xl pb-3">
+                Contact to us
+            </h2>
 
-            <form method="" action="#" className="my-4 px-20">
-                <div className="row uniform">
-                    <div className="6u 12u$(xsmall)">
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            value=""
-                            placeholder="Name"
-                        />
-                    </div>
-                    <div className="6u$ 12u$(xsmall)">
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            value=""
-                            placeholder="Email"
-                        />
-                    </div>
-
-                    <div className="12u$">
-                        <textarea
-                            name="message"
-                            id="message"
-                            placeholder="Enter your message"
-                            rows="6"
-                        ></textarea>
-                    </div>
-
-                    <div className="12u$">
-                        <ul className="actions">
-                            <li>
-                                <input type="submit" value="Send Message" />
-                            </li>
-                            <li>
+            <form action="#" method="POST">
+                <div class="shadow border overflow-hidden sm:rounded-md">
+                    <div class="px-4 py-5 bg-white sm:p-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="">
+                                <label
+                                    for="first_name"
+                                    class="block text-sm font-medium text-gray-700"
+                                >
+                                    First name
+                                </label>
                                 <input
-                                    type="reset"
-                                    value="Reset"
-                                    className="alt"
+                                    type="text"
+                                    placeholder="First name"
+                                    id="first_name"
+                                    class="border mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                 />
-                            </li>
-                        </ul>
+                            </div>
+
+                            <div class="">
+                                <label
+                                    for="email"
+                                    class="block text-sm font-medium text-gray-700"
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    type="text"
+                                    id="email"
+                                    placeholder="Email"
+                                    class="border mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                />
+                            </div>
+
+                            <div className="col-span-2">
+                                <label
+                                    for="messages"
+                                    class="block text-sm font-medium text-gray-700"
+                                >
+                                    Messages
+                                </label>
+                                <textarea
+                                    id="messages"
+                                    placeholder="Your messages"
+                                    className="border mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                    cols="30"
+                                    rows="5"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                        <button
+                            type="submit"
+                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white focus:outline-none btn-orange"
+                        >
+                            Send us
+                        </button>
                     </div>
                 </div>
             </form>

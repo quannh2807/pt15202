@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./styles/tailwind.output.css";
-import "./assets/css/main.css";
 import Header from "./components/Header";
 import Contact from "./components/Contact";
 import About from "./components/About";
@@ -13,20 +12,6 @@ import NewsPage from "./containers/NewsPage";
 import DetailNews from "./components/DetailNews";
 
 const App = () => {
-    const [listPost, setListPost] = useState([]);
-    const API_URL = "http://localhost:3004/posts";
-
-    useEffect(() => {
-        function fetchData() {
-            fetch(API_URL)
-                .then((res) => res.json())
-                .then((data) => setListPost(data))
-                .catch((error) => console.log(error));
-        }
-
-        fetchData();
-    }, []);
-
     return (
         <Router>
             <div>
@@ -38,9 +23,7 @@ const App = () => {
                         <HomePage />
                     </Route>
                     <Route exact path="/news">
-                        <NewsPage
-                            data={listPost}
-                        />
+                        <NewsPage />
                     </Route>
                     <Route exact path="/news/:id">
                         <DetailNews />

@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
+
+.btn-orange {
+    @apply rounded-lg bg-primary text-white px-10 py-4;
+}
+
 @tailwind utilities;

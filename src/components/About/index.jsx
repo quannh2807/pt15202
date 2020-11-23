@@ -1,73 +1,34 @@
 import React from "react";
+import pc_layout from "../../assets/images/pc_layout.png";
 
 const About = () => {
     return (
-        <div className="container mx-auto mt-10">
-            <h2 id="content">About Content</h2>
-            <p>
-                Praesent ac adipiscing ullamcorper semper ut amet ac risus.
-                Lorem sapien ut odio odio nunc. Ac adipiscing nibh porttitor
-                erat risus justo adipiscing adipiscing amet placerat accumsan.
-                Vis. Faucibus odio magna tempus adipiscing a non. In mi primis
-                arcu ut non accumsan vivamus ac blandit adipiscing adipiscing
-                arcu metus praesent turpis eu ac lacinia nunc ac commodo gravida
-                adipiscing eget accumsan ac nunc adipiscing adipiscing.
-            </p>
-            <div class="row">
-                <div class="6u 12u$(small)">
-                    <h3>Sem turpis amet semper</h3>
-                    <p>
-                        Nunc lacinia ante nunc ac lobortis. Interdum adipiscing
-                        gravida odio porttitor sem non mi integer non faucibus
-                        ornare mi ut ante amet placerat aliquet. Volutpat
-                        commodo eu sed ante lacinia. Sapien a lorem in integer
-                        ornare praesent commodo adipiscing arcu in massa commodo
-                        lorem accumsan at odio massa ac ac. Semper adipiscing
-                        varius montes viverra nibh in adipiscing blandit tempus
-                        accumsan.
-                    </p>
-                </div>
-                <div class="6u$ 12u$(small)">
-                    <h3>Magna odio tempus commodo</h3>
-                    <p>
-                        In arcu accumsan arcu adipiscing accumsan orci ac. Felis
-                        id enim aliquet. Accumsan ac integer lobortis commodo
-                        ornare aliquet accumsan erat tempus amet porttitor. Ante
-                        commodo blandit adipiscing integer semper orci eget.
-                        Faucibus commodo adipiscing mi eu nullam accumsan morbi
-                        arcu ornare odio mi adipiscing nascetur lacus ac
-                        interdum morbi accumsan vis mi accumsan ac praesent.
-                    </p>
-                </div>
+        <div className="container mx-auto">
+            <h2 className="text-secondary font-bold text-3xl mt-6">About Us</h2>
 
-                <div class="4u 12u$(medium)">
-                    <h3>Interdum sapien gravida</h3>
-                    <p>
-                        Nunc lacinia ante nunc ac lobortis. Interdum adipiscing
-                        gravida odio porttitor sem non mi integer non faucibus
-                        ornare mi ut ante amet placerat aliquet. Volutpat eu sed
-                        ante lacinia sapien lorem accumsan varius montes viverra
-                        nibh in adipiscing blandit tempus accumsan.
-                    </p>
+            <div class="flex items-center py-10">
+                <div class="pr-4">
+                    <img
+                        src={pc_layout}
+                        alt="pc_layout"
+                        width="300"
+                        className="rounded-lg"
+                    />
                 </div>
-                <div class="4u 12u$(medium)">
-                    <h3>Faucibus consequat lorem</h3>
+                <div class="flex-1">
+                    <h3 className="text-xl font-semibold">Who is Lighten</h3>
                     <p>
-                        Nunc lacinia ante nunc ac lobortis. Interdum adipiscing
-                        gravida odio porttitor sem non mi integer non faucibus
-                        ornare mi ut ante amet placerat aliquet. Volutpat eu sed
-                        ante lacinia sapien lorem accumsan varius montes viverra
-                        nibh in adipiscing blandit tempus accumsan.
+                        It has survived not only five centuries, but also the
+                        leap into electronic typesetting, remaining essentially
+                        unchanged. It was popularised in the 1960s with the
+                        release of Letraset sheets containing Lorem Ipsum.
                     </p>
-                </div>
-                <div class="4u$ 12u$(medium)">
-                    <h3>Accumsan montes viverra</h3>
                     <p>
-                        Nunc lacinia ante nunc ac lobortis. Interdum adipiscing
-                        gravida odio porttitor sem non mi integer non faucibus
-                        ornare mi ut ante amet placerat aliquet. Volutpat eu sed
-                        ante lacinia sapien lorem accumsan varius montes viverra
-                        nibh in adipiscing blandit tempus accumsan.
+                        Simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer
+                        took a galley of type and scrambled it to make a type
+                        specimen book.
                     </p>
                 </div>
             </div>
