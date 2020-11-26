@@ -20,20 +20,15 @@ const DetailNews = () => {
 
     return (
         <section className="container mx-auto my-10">
-            <div className="">
-                <h1 className="text-secondary font-bold text-3xl text-center">
+            <div className="flex flex-col justify-between items-center">
+                <h1 className="mb-10 text-secondary font-bold text-3xl text-center">
                     {news.title}
                 </h1>
+                <div className="w-1/2">
+                    <img src={news.img_url} alt="" className="w-full" />
+                </div>
 
                 <div className="flex items-center">
-                    <div className="">
-                        <img
-                            src={news.img_url}
-                            alt=""
-                            width="300"
-                            className="rounded-3xl"
-                        />
-                    </div>
                     <p className="flex-1 py-6 px-4">{news.description}</p>
                 </div>
             </div>
