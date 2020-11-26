@@ -6,8 +6,8 @@ const About = () => {
         <div className="container mx-auto">
             <h2 className="text-secondary font-bold text-3xl mt-6">About Us</h2>
 
-            <div class="flex items-center py-10">
-                <div class="pr-4">
+            <div className="flex items-center py-10">
+                <div className="pr-4">
                     <img
                         src={pc_layout}
                         alt="pc_layout"
@@ -15,7 +15,7 @@ const About = () => {
                         className="rounded-lg"
                     />
                 </div>
-                <div class="flex-1">
+                <div className="flex-1">
                     <h3 className="text-xl font-semibold">Who is Lighten</h3>
                     <p>
                         It has survived not only five centuries, but also the

@@ -21,6 +21,12 @@ const Header = () => {
                         News
                     </Link>
                     <Link
+                        to="/category"
+                        className="px-5 font-semibold uppercase tracking-wide text-gray-600 hover:text-gray-700"
+                    >
+                        Category
+                    </Link>
+                    <Link
                         to="/contact"
                         className="px-5 font-semibold uppercase tracking-wide text-gray-600 hover:text-gray-700"
                     >

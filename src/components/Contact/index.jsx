@@ -8,13 +8,13 @@ const Contact = () => {
             </h2>
 
             <form action="#" method="POST">
-                <div class="shadow border overflow-hidden sm:rounded-md">
-                    <div class="px-4 py-5 bg-white sm:p-6">
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="">
+                <div className="shadow border overflow-hidden sm:rounded-md">
+                    <div className="px-4 py-5 bg-white sm:p-6">
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="">
                                 <label
                                     for="first_name"
-                                    class="block text-sm font-medium text-gray-700"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     First name
                                 </label>
@@ -22,14 +22,14 @@ const Contact = () => {
                                     type="text"
                                     placeholder="First name"
                                     id="first_name"
-                                    class="border mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                    className="border mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                 />
                             </div>
 
-                            <div class="">
+                            <div className="">
                                 <label
                                     for="email"
-                                    class="block text-sm font-medium text-gray-700"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     Email
                                 </label>
@@ -37,14 +37,14 @@ const Contact = () => {
                                     type="text"
                                     id="email"
                                     placeholder="Email"
-                                    class="border mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                    className="border mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                 />
                             </div>
 
                             <div className="col-span-2">
                                 <label
                                     for="messages"
-                                    class="block text-sm font-medium text-gray-700"
+                                    className="block text-sm font-medium text-gray-700"
                                 >
                                     Messages
                                 </label>
@@ -58,10 +58,10 @@ const Contact = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                         <button
                             type="submit"
-                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white focus:outline-none btn-orange"
+                            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white focus:outline-none btn-orange"
                         >
                             Send us
                         </button>

@@ -18,7 +18,7 @@ const NewsPage = () => {
 
     return (
         <section className="container mx-auto mt-6 mb-20">
-            <h2 className="text-secondary font-bold text-3xl pb-6">List news</h2>
+            <h2 className="text-secondary font-bold text-3xl pb-6">Danh mục</h2>
 
             <div className="grid grid-cols-3 gap-6">
                 {listPost.map((post, index) => (
