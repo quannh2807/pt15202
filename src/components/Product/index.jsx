@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/Cart";
 
 const Product = ({ product }) => (
-    <div className="shadow-xl rounded-xl border border-gray-300">
+    <div className="shadow-xl rounded-xl border border-gray-300 pb-4">
         <div className="">
             <img
                 src={product.img_url}
@@ -30,34 +30,22 @@ const Product = ({ product }) => (
                     {product.name}
                 </Link>
             </h3>
-
-            <CartContext.Consumer>
-                {({ addToCart }) => {
-                    return (
+            <p className="font-bold text-red-600">{product.price} VND</p>
+        </div>
+        <CartContext.Consumer>
+            {({ addToCart }) => {
+                return (
+                    <div className="flex justify-center items-center">
                         <div
-                            className="p-2 border border-gray-300 rounded-xl"
+                            className="px-4 py-2 border-2 border-red-600 hover:bg-primary hover:text-white w-full mx-6 rounded-xl text-center font-bold text-primary"
                             onClick={() => addToCart(product)}
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="#25a2c3"
-                                height="20"
-                                width="20"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                                />
-                            </svg>
+                            Thêm vào giỏ hàng
                         </div>
-                    );
-                }}
-            </CartContext.Consumer>
-        </div>
+                    </div>
+                );
+            }}
+        </CartContext.Consumer>
     </div>
 );
 

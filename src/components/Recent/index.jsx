@@ -6,7 +6,7 @@ import Product from "../Product";
 const Recent = () => {
     const [recentProduct, setRecentProduct] = useState([]);
     const API_URL =
-        "http://localhost:1337/products?_sort=created_at:asc&_limit=4";
+        "http://localhost:1337/products?_sort=created_at:desc&_limit=4";
     useEffect(() => {
         const fetchData = () => {
             axios

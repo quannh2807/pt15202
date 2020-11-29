@@ -36,10 +36,10 @@ const Header = () => {
                         </Link>
                     </ul>
 
-                    <ul className="p-4 border-2 border-gray-300 rounded-lg hover:bg-gray-100 flex">
+                    <ul className="border-2 border-gray-300 rounded-lg hover:bg-gray-100">
                         <Link
                             to="/cart"
-                            className="font-semibold uppercase tracking-wide text-gray-600"
+                            className="p-4 flex font-semibold uppercase tracking-wide text-gray-600"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -56,15 +56,14 @@ const Header = () => {
                                     d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                                 />
                             </svg>
+                            <CartContext.Consumer>
+                                {({ cartItems }) => (
+                                    <span className="uppercase text-sm px-1 font-bold text-red-600">
+                                        {cartItems.length}
+                                    </span>
+                                )}
+                            </CartContext.Consumer>
                         </Link>
-
-                        <CartContext.Consumer>
-                            {({ cartItems }) => (
-                                <span className="uppercase text-sm px-1 font-bold text-red-600">
-                                    {cartItems.length}
-                                </span>
-                            )}
-                        </CartContext.Consumer>
                     </ul>
                 </nav>
             </header>

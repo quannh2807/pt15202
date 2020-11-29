@@ -4,6 +4,7 @@ import axios from "axios";
 const Asidebar = () => {
     const API_URL = "http://localhost:1337/categories";
     const [categories, setCategories] = useState([]);
+
     useEffect(() => {
         function fetchData() {
             axios
@@ -53,10 +54,12 @@ const Asidebar = () => {
                         name=""
                         id=""
                         className="w-full rounded-xl bg-gray-400 text-gray-700 font-bold"
+                        defaultValue="0"
                     >
+                        <option value="0">Chọn danh mục</option>
                         {categories.map((cate, index) => (
                             <option value={cate.id} key={index}>
-                                {cate.title}
+                                {cate.id} - {cate.title}
                             </option>
                         ))}
                     </select>
