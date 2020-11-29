@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const DetailNews = () => {
+const ProductDetail = () => {
     let { id } = useParams();
     const API_URL = `http://localhost:1337/posts/${id}`;
     const [news, setNews] = useState({});
@@ -36,4 +36,4 @@ const DetailNews = () => {
     );
 };
 
-export default DetailNews;
+export default ProductDetail;

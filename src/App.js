@@ -9,9 +9,8 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 
 import HomePage from "./containers/HomePage";
-import NewsPage from "./containers/NewsPage";
-import CategoryPage from "./containers/CategoryPage";
-import DetailNews from "./components/DetailNews";
+import StorePage from "./containers/StorePage";
+import DetailNews from "./components/ProductDetail";
 
 const App = () => {
     return (
@@ -26,20 +25,14 @@ const App = () => {
                     <Route exact path="/">
                         <HomePage />
                     </Route>
-                    <Route exact path="/news">
-                        <NewsPage />
+                    <Route exact path="/store">
+                        <StorePage />
                     </Route>
-                    <Route exact path="/news/:id">
+                    <Route exact path="/store/:id">
                         <DetailNews />
                     </Route>
                     <Route exact path="/contact">
                         <Contact />
-                    </Route>
-                    <Route exact path="/category">
-                        <CategoryPage />
-                    </Route>
-                    <Route exact path="/category/:cateID">
-                        <CategoryPage />
                     </Route>
                     <Route exact path="/about">
                         <About />

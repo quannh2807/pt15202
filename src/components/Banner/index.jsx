@@ -16,7 +16,7 @@ const Banner = () => {
                 </p>
                 <button className="btn-orange">
                     <Link to="/news" className="font-bold uppercase">
-                        Get Started
+                        Khám phá
                     </Link>
                 </button>
             </div>
