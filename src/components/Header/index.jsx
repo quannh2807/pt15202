@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../contexts/Cart";
 
 const Header = () => {
     return (
@@ -37,7 +38,7 @@ const Header = () => {
 
                     <ul className="p-4 border-2 border-gray-300 rounded-lg hover:bg-gray-100 flex">
                         <Link
-                            to="/login"
+                            to="/cart"
                             className="font-semibold uppercase tracking-wide text-gray-600"
                         >
                             <svg
@@ -49,17 +50,21 @@ const Header = () => {
                                 height="20"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                                 />
                             </svg>
                         </Link>
 
-                        <span className="uppercase text-sm px-1 font-bold text-red-600">
-                            0
-                        </span>
+                        <CartContext.Consumer>
+                            {({ cartItems }) => (
+                                <span className="uppercase text-sm px-1 font-bold text-red-600">
+                                    {cartItems.length}
+                                </span>
+                            )}
+                        </CartContext.Consumer>
                     </ul>
                 </nav>
             </header>
