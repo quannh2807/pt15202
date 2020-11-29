@@ -38,6 +38,9 @@ const App = () => {
                     <Route exact path="/category">
                         <CategoryPage />
                     </Route>
+                    <Route exact path="/category/:cateID">
+                        <CategoryPage />
+                    </Route>
                     <Route exact path="/about">
                         <About />
                     </Route>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Post from "../../components/Post";
+import SearchInput from "../../components/SearchInput";
 
 const NewsPage = () => {
     const [listPost, setListPost] = useState([]);
@@ -18,7 +19,7 @@ const NewsPage = () => {
 
     return (
         <section className="container mx-auto mt-6 mb-20">
-            <h2 className="text-secondary font-bold text-3xl pb-6">Danh mục</h2>
+            <h2 className="text-secondary font-bold text-3xl pb-6">Tất cả bài viết</h2>
 
             <div className="grid grid-cols-3 gap-6">
                 {listPost.map((post, index) => (
