@@ -4,14 +4,14 @@ import axios from "axios";
 
 const ProductDetail = () => {
     let { id } = useParams();
-    const API_URL = `http://localhost:1337/posts/${id}`;
-    const [news, setNews] = useState({});
+    const API_URL = `http://localhost:1337/products/${id}`;
+    const [product, setProduct] = useState({});
 
     useEffect(() => {
         function fetchData() {
             axios
                 .get(API_URL)
-                .then((res) => setNews(res.data))
+                .then((res) => setProduct(res.data))
                 .catch((err) => console.log(err));
         }
         fetchData();
@@ -20,16 +20,27 @@ const ProductDetail = () => {
 
     return (
         <section className="container mx-auto my-10">
-            <div className="flex flex-col justify-between items-center">
-                <h1 className="mb-10 text-secondary font-bold text-3xl text-center">
-                    {news.title}
-                </h1>
-                <div className="w-1/2">
-                    <img src={news.img_url} alt="" className="w-full" />
+            <div className="grid grid-cols-4 gap-4">
+                <div className="">
+                    <img
+                        src={product.img_url}
+                        alt=""
+                        className="w-full rounded-lg"
+                    />
                 </div>
+                <div className="col-span-3 bg-gray-200 rounded-md h-full p-6">
+                    <h2 className="text-secondary font-bold text-3xl">
+                        {product.name}
+                    </h2>
+                    <p className="">
+                        Danh mục:&nbsp;
+                        <span className="font-bold text-sm uppercase text-gray-600">
+                            {product.category.title}
+                        </span>
+                    </p>
+                    <p className="text-lg">Chi tiết sản phẩm: {product.description}</p>
 
-                <div className="flex items-center">
-                    <p className="flex-1 py-6 px-4">{news.description}</p>
+                    <p>Giá sản phẩm: <span className="text-red-700 font-bold">{product.price} VND</span></p>
                 </div>
             </div>
         </section>

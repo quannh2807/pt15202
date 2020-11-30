@@ -23,7 +23,7 @@ const Product = ({ product }) => (
                 </a>
                 &nbsp;-&nbsp;
                 <Link
-                    to={`/news/${product.id}`}
+                    to={`/store/${product.id}`}
                     replace
                     className="text-secondary font-bold text-xl text-center py-4 hover:underline"
                 >
