@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/Cart";
 
 const Header = () => {
+    const { cartItems } = useContext(CartContext);
+
     return (
         <div className="shadow-md sticky top-0 bg-white">
             <header className="container mx-auto flex items-center justify-between py-6">
@@ -56,13 +58,9 @@ const Header = () => {
                                     d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                                 />
                             </svg>
-                            <CartContext.Consumer>
-                                {({ cartItems }) => (
-                                    <span className="uppercase text-sm px-1 font-bold text-red-600">
-                                        {cartItems.length}
-                                    </span>
-                                )}
-                            </CartContext.Consumer>
+                            <span className="uppercase text-sm px-1 font-bold text-red-600">
+                                {cartItems.length}
+                            </span>
                         </Link>
                     </ul>
                 </nav>

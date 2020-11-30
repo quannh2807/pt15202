@@ -18,8 +18,6 @@ const Recent = () => {
         fetchData();
     }, []);
 
-    console.log(recentProduct);
-
     return (
         <div className="container mx-auto py-10">
             <h3 className="font-bold text-3xl text-secondary ">
