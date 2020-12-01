@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import Footer from "./components/Footer";
-import DetailNews from "./components/ProductDetail";
+import ProductDetail from "./components/ProductDetail";
 
 import HomePage from "./containers/HomePage";
 import StorePage from "./containers/StorePage";
@@ -33,7 +33,7 @@ const App = () => {
                             <StorePage />
                         </Route>
                         <Route exact path="/store/:id">
-                            <DetailNews />
+                            <ProductDetail />
                         </Route>
                         <Route exact path="/contact">
                             <Contact />

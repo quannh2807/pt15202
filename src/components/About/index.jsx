@@ -1,38 +1,60 @@
 import React from "react";
-import pc_layout from "../../assets/images/pc_layout.png";
 
 const About = () => {
     return (
-        <div className="container mx-auto">
-            <h2 className="text-secondary font-bold text-3xl mt-6">About Us</h2>
+        <section class="bg-white py-8">
+            <div class="container py-8 px-6 mx-auto">
+                <a
+                    class="uppercase tracking-wide no-underline hover:no-underline font-bold text-secondary text-xl mb-8"
+                    href="/#"
+                >
+                    About
+                </a>
 
-            <div className="flex items-center py-10">
-                <div className="pr-4">
-                    <img
-                        src={pc_layout}
-                        alt="pc_layout"
-                        width="300"
-                        className="rounded-lg"
-                    />
-                </div>
-                <div className="flex-1">
-                    <h3 className="text-xl font-semibold">Who is Lighten</h3>
-                    <p>
-                        It has survived not only five centuries, but also the
-                        leap into electronic typesetting, remaining essentially
-                        unchanged. It was popularised in the 1960s with the
-                        release of Letraset sheets containing Lorem Ipsum.
-                    </p>
-                    <p>
-                        Simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has been the industry's standard
-                        dummy text ever since the 1500s, when an unknown printer
-                        took a galley of type and scrambled it to make a type
-                        specimen book.
-                    </p>
-                </div>
+                <p class="mt-8 mb-8">
+                    This template is inspired by the stunning nordic minamalist
+                    design - in particular:
+                    <a
+                        class="text-gray-800 underline hover:text-gray-900"
+                        href="http://savoy.nordicmade.com/"
+                    >
+                        Savoy Theme
+                    </a>{" "}
+                    created by{" "}
+                    <a
+                        class="text-gray-800 underline hover:text-gray-900"
+                        href="https://nordicmade.com/"
+                    >
+                        https://nordicmade.com/
+                    </a>{" "}
+                    and{" "}
+                    <a
+                        class="text-gray-800 underline hover:text-gray-900"
+                        href="https://www.metricdesign.no/"
+                    >
+                        https://www.metricdesign.no/
+                    </a>
+                </p>
+
+                <p class="mb-8">
+                    Lorem ipsum dolor sit amet, consectetur{" "}
+                    <a href="/#">random link</a> adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Vel
+                    risus commodo viverra maecenas accumsan lacus vel facilisis
+                    volutpat. Vitae aliquet nec ullamcorper sit. Nullam eget
+                    felis eget nunc lobortis mattis aliquam. In est ante in nibh
+                    mauris. Egestas congue quisque egestas diam in. Facilisi
+                    nullam vehicula ipsum a arcu. Nec nam aliquam sem et tortor
+                    consequat. Eget mi proin sed libero enim sed faucibus turpis
+                    in. Hac habitasse platea dictumst quisque. In aliquam sem
+                    fringilla ut. Gravida rutrum quisque non tellus orci ac
+                    auctor augue mauris. Accumsan lacus vel facilisis volutpat
+                    est velit egestas dui id. At tempor commodo ullamcorper a.
+                    Volutpat commodo sed egestas egestas fringilla. Vitae congue
+                    eu consequat ac.
+                </p>
             </div>
-        </div>
+        </section>
     );
 };
 
