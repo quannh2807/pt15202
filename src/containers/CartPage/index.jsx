@@ -9,7 +9,6 @@ const CartPage = () => {
         0
     );
 
-    console.log(totalPrice);
     return (
         <div className="bg-gray-300 py-6">
             <div className="w-3/4 mx-auto bg-white rounded-2xl px-6">

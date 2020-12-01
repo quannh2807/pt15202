@@ -15,7 +15,7 @@ const Banner = () => {
                     sed arcu cras consecuat lorem ipsum dolor sit amet.
                 </p>
                 <button className="btn-orange">
-                    <Link to="/news" className="font-bold uppercase">
+                    <Link to="/store" className="font-bold uppercase">
                         Khám phá
                     </Link>
                 </button>
