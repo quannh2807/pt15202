@@ -1,56 +1,30 @@
 import "./styles/tailwind.output.css";
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+    Switch,
+    Route,
+    BrowserRouter as Router,
+    Redirect,
+} from "react-router-dom";
 
-import ScollTop from "./components/ScollTop";
-import Header from "./components/Header";
-import Contact from "./components/Contact";
-import About from "./components/About";
-import Footer from "./components/Footer";
-import ProductDetail from "./components/ProductDetail";
-
-import HomePage from "./containers/HomePage";
-import StorePage from "./containers/StorePage";
-import CartPage from "./containers/CartPage";
-
-import { CartProvider } from "./contexts/Cart";
+import ScollTop from "components/ScollTop";
+import Home from "routes/home";
+import Auth from "routes/auth";
 
 const App = () => {
     return (
-        <CartProvider>
+        <div>
             <Router>
                 <ScollTop />
 
-                <div>
-                    {/* Header */}
-                    <Header />
+                <Switch>
+                    <Redirect exact from="/" to="/home" />
 
-                    <Switch>
-                        <Route exact path="/">
-                            <HomePage />
-                        </Route>
-                        <Route exact path="/store">
-                            <StorePage />
-                        </Route>
-                        <Route exact path="/store/:id">
-                            <ProductDetail />
-                        </Route>
-                        <Route exact path="/contact">
-                            <Contact />
-                        </Route>
-                        <Route exact path="/about">
-                            <About />
-                        </Route>
-                        <Route exact path="/cart">
-                            <CartPage />
-                        </Route>
-                    </Switch>
-
-                    {/* Footer */}
-                    <Footer />
-                </div>
+                    <Route path="/home" component={Home} />
+                    <Route path="/auth" component={Auth} />
+                </Switch>
             </Router>
-        </CartProvider>
+        </div>
     );
 };
 

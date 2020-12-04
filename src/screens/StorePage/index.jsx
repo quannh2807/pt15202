@@ -1,63 +1,66 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { productApi, categoryApi } from "api";
 
-import Product from "../../components/Product";
-import Pagination from "../../components/Pagination";
-import FilterCategory from "../../components/FilterCategory";
+import FilterCategory from "components/FilterCategory";
+import Product from "components/Product";
+import Pagination from "components/Pagination";
 
 const StorePage = () => {
-    let API_URL = `http://localhost:1337/products`;
-
-    const [listPost, setListPost] = useState([]);
+    const [filterProduct, setFilterProduct] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [totalProduct, setTotalProduct] = useState();
+
     const [filters, setFilters] = useState({
-        start: 1,
-        limit: 3,
+        start: 0,
+        limit: 6,
         current_page: 1,
         cate_id: null,
     });
 
-    const [totalProduct, setTotalProduct] = useState(0);
     // Count total product
     useEffect(() => {
-        function countProduct() {
-            axios
-                .get(`${API_URL}/count`)
-                .then((res) => setTotalProduct(res.data));
-        }
+        const countProduct = async () => {
+            const res = await productApi.count();
+            setTotalProduct(res);
+        };
 
         countProduct();
     }, []);
+
     // fetch Data
     useEffect(() => {
-        function fetchProducts() {
-            let current_Api = `${API_URL}?_start=${filters.start}&_limit=${filters.limit}`;
+        const fetchProducts = async () => {
+            // reset state
+
+            let params = {
+                _start: filters.start,
+                _limit: filters.limit,
+            };
             if (filters.cate_id && filters.cate_id !== null) {
-                current_Api = `${current_Api}&category.id=${filters.cate_id}`;
+                params = {
+                    "category.id_eq": filters.cate_id,
+                    ...params,
+                };
             }
 
-            fetch(current_Api)
-                .then((res) => res.json())
-                .then((data) => setListPost(data))
-                .catch((error) => console.log(error));
-        }
+            const res = await productApi.getAll(params);
+            setFilterProduct(res);
+        };
 
         fetchProducts();
     }, [filters]);
 
-    // get total category
+    // get category
     useEffect(() => {
         const fetchData = async () => {
-            let res = await fetch("http://localhost:1337/categories");
-            let data = await res.json();
-
-            setCategories(data);
+            const res = await categoryApi.getAll();
+            setCategories(res);
         };
 
         fetchData();
     }, []);
 
-    function handlePageChange(newStart) {
+    const handlePageChange = (newStart) => {
         let newPage;
         if (newStart > filters.start) {
             newPage = filters.current_page + 1;
@@ -70,19 +73,20 @@ const StorePage = () => {
             current_page: newPage,
             start: newStart,
         });
-    }
+    };
 
-    function handleCategoryChange(e) {
+    const handleCategoryChange = (e) => {
         let newCateID = e.target.value;
 
         if (newCateID) {
             setFilters({
                 ...filters,
-                cate_id: newCateID,
+                cate_id: Number(newCateID),
             });
         }
+
         console.log(filters);
-    }
+    };
 
     return (
         <section className="container mx-auto mt-6 mb-5">
@@ -121,7 +125,7 @@ const StorePage = () => {
                 </div>
                 <div className="col-span-3">
                     <div className="grid grid-cols-3 gap-x-2 gap-y-4">
-                        {listPost.map((product, index) => (
+                        {filterProduct.map((product, index) => (
                             <Product product={product} key={index} />
                         ))}
                     </div>

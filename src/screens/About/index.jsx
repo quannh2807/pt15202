@@ -2,41 +2,41 @@ import React from "react";
 
 const About = () => {
     return (
-        <section class="bg-white py-8">
-            <div class="container py-8 px-6 mx-auto">
+        <section className="bg-white py-8">
+            <div className="container py-8 px-6 mx-auto">
                 <a
-                    class="uppercase tracking-wide no-underline hover:no-underline font-bold text-secondary text-xl mb-8"
+                    className="uppercase tracking-wide no-underline hover:no-underline font-bold text-secondary text-xl mb-8"
                     href="/#"
                 >
                     About
                 </a>
 
-                <p class="mt-8 mb-8">
+                <p className="mt-8 mb-8">
                     This template is inspired by the stunning nordic minamalist
                     design - in particular:
                     <a
-                        class="text-gray-800 underline hover:text-gray-900"
+                        className="text-gray-800 underline hover:text-gray-900"
                         href="http://savoy.nordicmade.com/"
                     >
                         Savoy Theme
                     </a>{" "}
                     created by{" "}
                     <a
-                        class="text-gray-800 underline hover:text-gray-900"
+                        className="text-gray-800 underline hover:text-gray-900"
                         href="https://nordicmade.com/"
                     >
                         https://nordicmade.com/
                     </a>{" "}
                     and{" "}
                     <a
-                        class="text-gray-800 underline hover:text-gray-900"
+                        className="text-gray-800 underline hover:text-gray-900"
                         href="https://www.metricdesign.no/"
                     >
                         https://www.metricdesign.no/
                     </a>
                 </p>
 
-                <p class="mb-8">
+                <p className="mb-8">
                     Lorem ipsum dolor sit amet, consectetur{" "}
                     <a href="/#">random link</a> adipiscing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Vel

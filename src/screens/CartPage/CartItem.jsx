@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Swal from "sweetalert2";
 import { CartContext } from "../../contexts/Cart";
 
 const CartItem = ({ product, position }) => {
@@ -6,27 +7,46 @@ const CartItem = ({ product, position }) => {
 
     return (
         <div className="flex justify-between py-6 items-center border-b border-gray-300">
-            <div>
+            <div className="w-1/4">
                 <img
                     src={product.img_url}
                     alt=""
-                    width="200"
-                    className="rounded-2xl"
+                    className="rounded-2xl w-full"
                 />
             </div>
 
-            <div>
+            <div className="w-2/4">
                 <h3 className="text-secondary font-bold text-xl">
                     {product.name}
                 </h3>
-                <p className="text-yellow-600">{product.description}</p>
             </div>
 
             <div>
                 <p>Giá: {product.price} VND</p>
             </div>
 
-            <div onClick={() => removeItem(position)}>
+            {/* <div onClick={() => removeItem(position)}> */}
+            <div
+                onClick={() =>
+                    Swal.fire({
+                        title: "Bạn chắc chắn chưa?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Xóa sản phẩm!",
+                        cancelButtonText: "Hủy",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                "Đã xóa",
+                                "Sản phẩm đã xóa khỏi giỏ hàng.",
+                                "success"
+                            ).then(() => removeItem(position));
+                        }
+                    })
+                }
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

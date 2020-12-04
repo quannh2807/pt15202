@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import { nyanCat } from "constants/Images";
 
 export const CartContext = React.createContext();
 
@@ -7,7 +9,17 @@ export const CartProvider = (props) => {
 
     const addToCart = (product) => {
         const newCartItems = cartItems.concat(product);
-        setCartItems(newCartItems);
+        Swal.fire({
+            title: "Thêm vào giỏ hàng thành công",
+            width: 400,
+            padding: "2em",
+            backdrop: `
+                rgba(0,0,123,0.4)
+                url(${nyanCat})
+                left top
+                no-repeat
+            `,
+        }).then(() => setCartItems(newCartItems));
     };
 
     const removeItem = (position) => {
