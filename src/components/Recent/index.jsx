@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
+import { productApi } from "api";
 import Product from "../Product";
 
 const Recent = () => {
     const [recentProduct, setRecentProduct] = useState([]);
-    const API_URL =
-        "http://localhost:1337/products?_sort=created_at:desc&_limit=4";
+
     useEffect(() => {
-        const fetchData = () => {
-            axios
-                .get(API_URL)
-                .then((res) => setRecentProduct(res.data))
-                .catch((err) => console.log(err));
+        const params = {
+            _sort: "created_at:desc",
+            _limit: 4,
+        };
+        const fetchData = async () => {
+            const res = await productApi.getAll(params);
+            setRecentProduct(res);
         };
 
         fetchData();

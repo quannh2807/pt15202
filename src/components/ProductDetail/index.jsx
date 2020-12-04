@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { productApi } from "api";
+
+import { CartContext } from "contexts/Cart";
 
 const ProductDetail = () => {
     let { id } = useParams();
-    const API_URL = `http://localhost:1337/products/${id}`;
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        function fetchData() {
-            axios
-                .get(API_URL)
-                .then((res) => setProduct(res.data))
-                .catch((err) => console.log(err));
-        }
+        const fetchData = async () => {
+            const res = await productApi.get(id);
+            setProduct(res);
+        };
+
         fetchData();
-        window.scrollTo(0, 0);
-    }, []);
+    }, [id]);
 
     return (
         <section className="container mx-auto my-10">
@@ -33,14 +32,44 @@ const ProductDetail = () => {
                         {product.name}
                     </h2>
                     <p className="">
-                        Danh mục:&nbsp;
-                        <span className="font-bold text-sm uppercase text-gray-600">
+                        <span className="font-bold uppercase text-sm">
+                            Danh mục:
+                        </span>
+                        &nbsp;
+                        <span className="font-bold text-sm uppercase text-gray-700">
                             {product.category.title}
                         </span>
                     </p>
-                    <p className="text-lg">Chi tiết sản phẩm: {product.description}</p>
+                    <p className="text-lg">
+                        <span className="font-bold uppercase text-sm">
+                            Chi tiết sản phẩm:
+                        </span>
+                        <br />
+                        <span className="text-base text-gray-700">
+                            {product.description}
+                        </span>
+                    </p>
 
-                    <p>Giá sản phẩm: <span className="text-red-700 font-bold">{product.price} VND</span></p>
+                    <p>
+                        <span className="font-bold uppercase text-sm">
+                            Giá sản phẩm:
+                        </span>
+                        &nbsp;
+                        <span className="text-red-700 font-bold">
+                            {product.price} VND
+                        </span>
+                    </p>
+
+                    <CartContext.Consumer>
+                        {({ addToCart }) => (
+                            <button
+                                className="btn-orange mt-2"
+                                onClick={() => addToCart(product)}
+                            >
+                                Thêm vào giỏ hàng
+                            </button>
+                        )}
+                    </CartContext.Consumer>
                 </div>
             </div>
         </section>
