@@ -1,13 +1,18 @@
 import React, { useContext } from "react";
-import { CartContext } from "../../contexts/Cart";
+import { CartContext } from "contexts/Cart";
 import CartItem from "./CartItem";
+
+import { formatCash } from "constants/Others";
 
 const CartPage = () => {
     const { cartItems } = useContext(CartContext);
-    const totalPrice = cartItems.reduce(
-        (totalPrice, currentPrice) => totalPrice + currentPrice.price,
-        0
-    );
+
+    const totalPrice = cartItems.reduce((totalPrice, currentPrice) => {
+        const { product, quantity } = currentPrice;
+        const gia1SP = product.price * quantity;
+
+        return totalPrice + gia1SP;
+    }, 0);
 
     return (
         <div className="bg-gray-300 py-6">
@@ -19,24 +24,18 @@ const CartPage = () => {
                 )}
 
                 {cartItems.length > 0 &&
-                    cartItems.map((product, index) => (
-                        <>
-                            <CartItem
-                                product={product}
-                                key={index}
-                                position={index}
-                            />
-                        </>
+                    cartItems.map((item, index) => (
+                        <CartItem item={item} key={index} position={index} />
                     ))}
 
                 {cartItems.length > 0 && (
                     <div className="flex justify-between items-center py-6">
                         <div className="text-black font-bold text-xl">
-                            Tổng giá trị:{" "}
+                            Tổng giá trị:&nbsp;
                         </div>
 
                         <div className="text-red-600 text-xl font-bold">
-                            {totalPrice} VND
+                            {formatCash(`${totalPrice}`)} VND
                         </div>
                     </div>
                 )}
