@@ -1,13 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import { CartContext } from "../../contexts/Cart";
+import { CartContext } from "contexts/Cart";
 
-const CartItem = ({ product, position }) => {
+import { plusIcon, minusIcon } from "constants/Images";
+
+const CartItem = ({ item, position }) => {
     const { removeItem } = useContext(CartContext);
+    const { product, quantity } = item;
+    const [productQuantity, setProductQuantity] = useState(quantity);
+
+    const increaseProduct = () => setProductQuantity(productQuantity + 1);
+    const minusProduct = () => setProductQuantity(productQuantity - 1);
 
     return (
         <div className="flex justify-between py-6 items-center border-b border-gray-300">
-            <div className="w-1/4">
+            <div>
                 <img
                     src={product.img_url}
                     alt=""
@@ -15,14 +22,35 @@ const CartItem = ({ product, position }) => {
                 />
             </div>
 
-            <div className="w-2/4">
+            <div>
                 <h3 className="text-secondary font-bold text-xl">
                     {product.name}
                 </h3>
             </div>
 
             <div>
-                <p>Giá: {product.price} VND</p>
+                <p>
+                    <span className="font-bold">Giá:</span> {product.price} VND
+                </p>
+            </div>
+            <div className="flex justify-between items-center">
+                <p className="mx-1 font-bold">Số lượng:</p>
+
+                <button
+                    className="mx-1 focus:outline-none"
+                    onClick={() => minusProduct()}
+                >
+                    <img src={minusIcon} alt="" width={30} />
+                </button>
+
+                <span className="mx-1">{productQuantity}</span>
+
+                <button
+                    className="mx-1 focus:outline-none"
+                    onClick={() => increaseProduct()}
+                >
+                    <img src={plusIcon} alt="" width={30} />
+                </button>
             </div>
 
             {/* <div onClick={() => removeItem(position)}> */}

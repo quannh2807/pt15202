@@ -37,7 +37,7 @@ const ProductDetail = () => {
                         </span>
                         &nbsp;
                         <span className="font-bold text-sm uppercase text-gray-700">
-                            {product.category.title}
+                            {product.category && product.category.title}
                         </span>
                     </p>
                     <p className="text-lg">
@@ -63,7 +63,7 @@ const ProductDetail = () => {
                     <CartContext.Consumer>
                         {({ addToCart }) => (
                             <button
-                                className="btn-orange mt-2"
+                                className="btn-orange mt-2 focus:outline-none transition duration-500 ease-in-out hover:bg-blue-600 transform hover:-translate-y-1 hover:scale-110 "
                                 onClick={() => addToCart(product)}
                             >
                                 Thêm vào giỏ hàng

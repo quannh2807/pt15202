@@ -84,8 +84,6 @@ const StorePage = () => {
                 cate_id: Number(newCateID),
             });
         }
-
-        console.log(filters);
     };
 
     return (

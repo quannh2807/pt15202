@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 
 const Banner = () => {
+    const { url } = useRouteMatch();
     return (
         <section className="bg-banner">
             <div className="mx-auto max-w-6xl text-center py-48">
@@ -15,7 +17,7 @@ const Banner = () => {
                     sed arcu cras consecuat lorem ipsum dolor sit amet.
                 </p>
                 <button className="btn-orange">
-                    <Link to="/store" className="font-bold uppercase">
+                    <Link to={`${url}/store`} className="font-bold uppercase">
                         Khám phá
                     </Link>
                 </button>

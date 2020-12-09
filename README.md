@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- CartItem (object)
+-- Items (object)
+-- Quantity (number)
+--- Khi thêm sản phẩm vào giỏ sẽ gồm: 1 obj thông tin sản phẩm, 1 số lượng
+--- Check sản phẩm có tồn tại trong giỏ không ? -- Kiểm tra id
+--- Nếu tồn tại thì tăng số lượng, Không tồn tại thì thêm sản phẩm đó vào
