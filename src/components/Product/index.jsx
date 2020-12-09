@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
 import { CartContext } from "contexts/Cart";
 import { formatCash } from "constants/Others";
 
 const Product = ({ product }) => {
+    const { addProduct, cartItems, increase } = useContext(CartContext);
     const { path } = useRouteMatch();
+
+    const isInCart = (product) => {
+        return !!cartItems.find((item) => item.id === product.id);
+    };
 
     return (
         <div className="flex flex-col justify-between shadow-xl rounded-xl border border-gray-300 pb-4">
@@ -38,18 +43,25 @@ const Product = ({ product }) => {
                     {formatCash(`${product.price}`)} VND
                 </p>
             </div>
-            <CartContext.Consumer>
-                {({ addToCart }) => (
-                    <div className=" flex justify-center items-center">
-                        <div
-                            className="px-4 py-2 border-2 border-red-600 hover:bg-primary hover:text-white w-full mx-6 rounded-xl text-center font-bold text-primary focus:outline-none"
-                            onClick={() => addToCart(product)}
-                        >
-                            Thêm vào giỏ hàng
-                        </div>
+            <div className=" flex justify-center items-center">
+                {isInCart(product) && (
+                    <div
+                        className="px-4 py-2 border-2 border-red-600 hover:bg-primary hover:text-white w-full mx-6 rounded-xl text-center font-bold text-primary focus:outline-none"
+                        onClick={() => increase(product)}
+                    >
+                        Tăng SL
                     </div>
                 )}
-            </CartContext.Consumer>
+
+                {!isInCart(product) && (
+                    <div
+                        className="px-4 py-2 border-2 border-red-600 hover:bg-primary hover:text-white w-full mx-6 rounded-xl text-center font-bold text-primary focus:outline-none"
+                        onClick={() => addProduct(product)}
+                    >
+                        Thêm vào giỏ hàng
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

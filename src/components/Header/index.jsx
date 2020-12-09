@@ -4,7 +4,7 @@ import { CartContext } from "../../contexts/Cart";
 
 const Header = () => {
     let { url } = useRouteMatch();
-    const { cartItems } = useContext(CartContext);
+    const { itemCount } = useContext(CartContext);
 
     return (
         <div className="shadow-md sticky top-0 bg-white">
@@ -61,11 +61,10 @@ const Header = () => {
                                     />
                                 </svg>
                                 <span className="uppercase text-sm px-1 font-bold text-red-600">
-                                    {cartItems.length}
+                                    {itemCount}
                                 </span>
                             </Link>
                         </li>
-
                     </ul>
                 </nav>
             </header>

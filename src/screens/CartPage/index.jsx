@@ -5,14 +5,7 @@ import CartItem from "./CartItem";
 import { formatCash } from "constants/Others";
 
 const CartPage = () => {
-    const { cartItems } = useContext(CartContext);
-
-    const totalPrice = cartItems.reduce((totalPrice, currentPrice) => {
-        const { product, quantity } = currentPrice;
-        const gia1SP = product.price * quantity;
-
-        return totalPrice + gia1SP;
-    }, 0);
+    const { cartItems, total } = useContext(CartContext);
 
     return (
         <div className="bg-gray-300 py-6">
@@ -35,7 +28,7 @@ const CartPage = () => {
                         </div>
 
                         <div className="text-red-600 text-xl font-bold">
-                            {formatCash(`${totalPrice}`)} VND
+                            {formatCash(`${total}`)} VND
                         </div>
                     </div>
                 )}
