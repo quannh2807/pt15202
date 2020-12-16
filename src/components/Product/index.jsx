@@ -1,10 +1,25 @@
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-
-import { CartContext } from "contexts/Cart";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewCartItem, increaseCartItem } from "redux/actions/cart";
 import { formatCash } from "constants/Others";
 
 const Product = ({ product }) => {
+    const dispatch = useDispatch();
+    const handleClickAddToCart = (product) => {
+        const action = addNewCartItem(product);
+        dispatch(action);
+    };
+    const handleClickIncreaseCartItem = (product) => {
+        const action = increaseCartItem(product);
+        dispatch(action);
+    };
+
+    const cartItems = useSelector((state) => state.cart.cartItems);
+    function isInCart(product) {
+        return !!cartItems.find((item) => item.id === product.id);
+    }
+
     const { path } = useRouteMatch();
 
     return (
@@ -27,7 +42,7 @@ const Product = ({ product }) => {
                     </a>
                     &nbsp;-&nbsp;
                     <Link
-                        to={`${path}/store/${product.id}`}
+                        to={`${path}/${product.id}`}
                         replace
                         className="text-secondary font-bold text-xl text-center py-4 hover:underline"
                     >
@@ -38,18 +53,25 @@ const Product = ({ product }) => {
                     {formatCash(`${product.price}`)} VND
                 </p>
             </div>
-            <CartContext.Consumer>
-                {({ addToCart }) => (
-                    <div className=" flex justify-center items-center">
-                        <div
-                            className="px-4 py-2 border-2 border-red-600 hover:bg-primary hover:text-white w-full mx-6 rounded-xl text-center font-bold text-primary focus:outline-none"
-                            onClick={() => addToCart(product)}
-                        >
-                            Thêm vào giỏ hàng
-                        </div>
-                    </div>
+            <div className=" flex justify-center items-center">
+                {!isInCart(product) && (
+                    <button
+                        className="px-4 py-2 border-2 border-red-600 hover:bg-primary hover:text-white w-full mx-6 rounded-xl text-center font-bold text-primary focus:outline-none"
+                        onClick={() => handleClickAddToCart(product)}
+                    >
+                        Thêm vào giỏ
+                    </button>
                 )}
-            </CartContext.Consumer>
+
+                {isInCart(product) && (
+                    <button
+                        className="px-4 py-2 border-2 border-blue-400 hover:text-primary w-full mx-6 rounded-xl text-center font-bold text-secondary focus:outline-none"
+                        onClick={() => handleClickIncreaseCartItem(product)}
+                    >
+                        Tăng số lượng
+                    </button>
+                )}
+            </div>
         </div>
     );
 };

@@ -1,18 +1,12 @@
-import React, { useContext } from "react";
-import { CartContext } from "contexts/Cart";
+import React from "react";
+import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 
 import { formatCash } from "constants/Others";
 
 const CartPage = () => {
-    const { cartItems } = useContext(CartContext);
-
-    const totalPrice = cartItems.reduce((totalPrice, currentPrice) => {
-        const { product, quantity } = currentPrice;
-        const gia1SP = product.price * quantity;
-
-        return totalPrice + gia1SP;
-    }, 0);
+    const cartItems = useSelector((state) => state.cart.cartItems);
+    const total = useSelector((state) => state.cart.total);
 
     return (
         <div className="bg-gray-300 py-6">
@@ -25,18 +19,21 @@ const CartPage = () => {
 
                 {cartItems.length > 0 &&
                     cartItems.map((item, index) => (
-                        <CartItem item={item} key={index} position={index} />
+                        <CartItem item={item} key={index} />
                     ))}
 
                 {cartItems.length > 0 && (
                     <div className="flex justify-between items-center py-6">
                         <div className="text-black font-bold text-xl">
                             Tổng giá trị:&nbsp;
+                            <span className="text-red-600 text-xl font-bold">
+                                {formatCash(`${total}`)} VND
+                            </span>
                         </div>
 
-                        <div className="text-red-600 text-xl font-bold">
-                            {formatCash(`${totalPrice}`)} VND
-                        </div>
+                        <button className="btn-orange font-semibold">
+                            Checkout
+                        </button>
                     </div>
                 )}
             </div>

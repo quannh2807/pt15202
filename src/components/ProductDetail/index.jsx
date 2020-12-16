@@ -1,12 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { productApi } from "api";
-
-import { CartContext } from "contexts/Cart";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewCartItem, increaseCartItem } from "redux/actions/cart";
 
 const ProductDetail = () => {
     let { id } = useParams();
     const [product, setProduct] = useState({});
+
+    const dispatch = useDispatch();
+
+    const handleClickAddToCart = (product) => {
+        const action = addNewCartItem(product);
+        dispatch(action);
+    };
+    const handleClickIncreaseCartItem = (product) => {
+        const action = increaseCartItem(product);
+        dispatch(action);
+    };
+
+    const cartItems = useSelector((state) => state.cart.cartItems);
+
+    function isInCart(product) {
+        return !!cartItems.find((item) => item.id === product.id);
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -60,16 +77,23 @@ const ProductDetail = () => {
                         </span>
                     </p>
 
-                    <CartContext.Consumer>
-                        {({ addToCart }) => (
-                            <button
-                                className="btn-orange mt-2 focus:outline-none transition duration-500 ease-in-out hover:bg-blue-600 transform hover:-translate-y-1 hover:scale-110 "
-                                onClick={() => addToCart(product)}
-                            >
-                                Thêm vào giỏ hàng
-                            </button>
-                        )}
-                    </CartContext.Consumer>
+                    {!isInCart(product) && (
+                        <button
+                            className="max-w-1/2 px-4 py-2 border-2 border-red-600 hover:bg-primary hover:text-white rounded-xl text-center font-bold text-primary focus:outline-none"
+                            onClick={() => handleClickAddToCart(product)}
+                        >
+                            Thêm vào giỏ
+                        </button>
+                    )}
+
+                    {isInCart(product) && (
+                        <button
+                            className="max-w-1/2 px-4 py-2 border-2 border-blue-400 hover:text-primary rounded-xl text-center font-bold text-secondary focus:outline-none"
+                            onClick={() => handleClickIncreaseCartItem(product)}
+                        >
+                            Tăng số lượng
+                        </button>
+                    )}
                 </div>
             </div>
         </section>

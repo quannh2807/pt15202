@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
-import { CartProvider } from "contexts/Cart";
 import Header from "components/Header";
 import HomePage from "screens/HomePage";
 import StorePage from "screens/StorePage";
@@ -15,34 +14,32 @@ const Home = () => {
     let { path } = useRouteMatch();
 
     return (
-        <CartProvider>
-            <div>
-                <Header />
+        <div>
+            <Header />
 
-                <Switch>
-                    <Route exact path={`${path}`}>
-                        <HomePage />
-                    </Route>
-                    <Route exact path={`${path}/store`}>
-                        <StorePage />
-                    </Route>
-                    <Route exact path={`${path}/store/:id`}>
-                        <ProductDetail />
-                    </Route>
-                    <Route exact path={`${path}/contact`}>
-                        <Contact />
-                    </Route>
-                    <Route exact path={`${path}/about`}>
-                        <About />
-                    </Route>
-                    <Route exact path={`${path}/cart`}>
-                        <CartPage />
-                    </Route>
-                </Switch>
+            <Switch>
+                <Route exact path={`${path}`}>
+                    <HomePage />
+                </Route>
+                <Route exact path={`${path}/store`}>
+                    <StorePage />
+                </Route>
+                <Route exact path={`${path}/store/:id`}>
+                    <ProductDetail />
+                </Route>
+                <Route exact path={`${path}/contact`}>
+                    <Contact />
+                </Route>
+                <Route exact path={`${path}/about`}>
+                    <About />
+                </Route>
+                <Route exact path={`${path}/cart`}>
+                    <CartPage />
+                </Route>
+            </Switch>
 
-                <Footer />
-            </div>
-        </CartProvider>
+            <Footer />
+        </div>
     );
 };
 

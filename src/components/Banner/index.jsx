@@ -16,11 +16,12 @@ const Banner = () => {
                     <br />
                     sed arcu cras consecuat lorem ipsum dolor sit amet.
                 </p>
-                <button className="btn-orange">
-                    <Link to={`${url}/store`} className="font-bold uppercase">
-                        Khám phá
-                    </Link>
-                </button>
+                <Link
+                    to={`${url}/store`}
+                    className="btn-orange font-bold uppercase"
+                >
+                    Khám phá
+                </Link>
             </div>
         </section>
     );

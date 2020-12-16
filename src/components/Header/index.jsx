@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import { CartContext } from "../../contexts/Cart";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     let { url } = useRouteMatch();
-    const { cartItems } = useContext(CartContext);
+    const itemCount = useSelector((state) => state.cart.itemCount);
 
     return (
         <div className="shadow-md sticky top-0 bg-white">
@@ -61,11 +61,10 @@ const Header = () => {
                                     />
                                 </svg>
                                 <span className="uppercase text-sm px-1 font-bold text-red-600">
-                                    {cartItems.length}
+                                    {itemCount}
                                 </span>
                             </Link>
                         </li>
-
                     </ul>
                 </nav>
             </header>
